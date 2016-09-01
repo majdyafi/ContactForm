@@ -1,0 +1,102 @@
+﻿@model WebApplication1.Models.ContactFormModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Simple Contact Form</h2>
+<div id="myClock"></div>
+<div id="myWeather"></div>
+<div ng-controller="myController">
+    <form name="studentForm" class="form-horizontal" ng-submit="submitSutdentForm()" role="form" novalidate>
+        <div class="form-group">
+            <label for="firstName" class="col-sm-3 control-label">First Name</label>
+            <div class="col-sm-6">
+                <input type="text" id="firstName" class="form-control" ng-model="student.firstName" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName" class="col-sm-3 control-label" ng-model="student.lastName">Last Name</label>
+            <div class="col-sm-6">
+                <input type="text" name="lastName" id="lastName" class="form-control" ng-required="true" ng-model="student.lastName" />
+                <span ng-show="studentForm.lastName.$touched && studentForm.lastName.$error.required">Frontend validation: Last Name name is required.</span><br /><br />
+            </div>
+            @*<div class="col-sm-3"></div>*@
+        </div>
+        <div class="form-group">
+            <label for="gender" class="col-sm-3 control-label">Gender</label>
+            <div class="col-sm-2">
+                <select id="gender" class="form-control" ng-model="student.gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="col-sm-7"></div>
+        </div>
+        <div class="form-group">
+            @*<div class="col-sm-offset-3">
+                <span>Training Location</span>
+                <div class="radio">
+                    <label><input type="radio" value="online" name="training" ng-model="student.trainingType">	Online </label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" value="onsite" name="training" ng-model="student.trainingType">	On Site </label>
+                </div>
+            </div>*@
+            
+
+            </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3">
+                <span><b>Main Subjects</b></span>
+                <div class="checkbox">
+                    <label><input type="checkbox" ng-model="student.maths" />Maths</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" ng-model="student.physics" />Physics</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" ng-model="student.chemistry" />Chemistry</label>
+                </div>
+            </div>
+            </div>
+        <input type="submit" value="Save" class="btn btn-primary col-sm-offset-3" />
+        <input type="reset" value="Reset" ng-click="resetForm()" /><br/>
+    </form>
+
+
+    <div class="divList">
+        <p class="divHead">Contact Form List</p>
+        Search: <input type="text" ng-model="searchTerm" />
+
+        <table cellpadding="12" class="table table-bordered table-hover">
+            <tr>
+                <td><b>ID</b></td>
+                <td><b>First Name</b></td>
+                <td><b>Last Name</b></td>
+                <td><b>Gender</b></td>
+
+            </tr>
+            <tr ng-repeat="item in students | filter:searchTerm">
+                <td>
+                    {{item.id}}
+                </td>
+                <td>
+                    {{item.FirstName}}
+                </td>
+                <td>
+                    {{item.LastName}}
+                </td>
+                <td>
+                    {{item.Gender}}
+                </td>
+
+            </tr>
+        </table>
+    </div>
+
+    <script src="~/myScripts/myController.js"></script>
+    <script src="~/myScripts/myClock.js"></script>
+</div>
+

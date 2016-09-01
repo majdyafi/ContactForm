@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ContactFormModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ContactForm_tbl">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="FirstName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="TrainingLocation" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Math" Type="Boolean" />
+    <Property Name="Physics" Type="Boolean" />
+    <Property Name="Chemistry" Type="Boolean" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="ContactFormEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ContactForm_tbl" EntityType="Self.ContactForm_tbl" />
+  </EntityContainer>
+</Schema>
